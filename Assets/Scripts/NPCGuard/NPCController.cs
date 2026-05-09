@@ -12,7 +12,7 @@ using UnityEngine.Events;
 public class NPCController : MonoBehaviour
 {
     // ── State ────────────────────────────────────────────────────────────────
-    public enum NPCState { Patrolling, Suspicious, Alarmed }
+    public enum NPCState { Patrolling, Reacting, Suspicious, Alarmed }
     public NPCState CurrentState { get; private set; } = NPCState.Patrolling;
 
     // ── Patrol ───────────────────────────────────────────────────────────────
@@ -30,11 +30,15 @@ public class NPCController : MonoBehaviour
     [Tooltip("How long the NPC investigates last known pos before giving up")]
     [SerializeField] private float investigateDuration = 6f;
 
+    [Header("Reaction")]
+    [Tooltip("Seconds the NPC freezes when it FIRST spots the player — gives them a chance to hide")]
+    [SerializeField] private float reactionDelay = 1f;
+
     // ── Movement speeds ──────────────────────────────────────────────────────
     [Header("Movement Speeds")]
-    [SerializeField] private float patrolSpeed   = 1.8f;
+    [SerializeField] private float patrolSpeed = 1.8f;
     [SerializeField] private float suspiciousSpeed = 2.8f;
-    [SerializeField] private float alarmedSpeed  = 4f;
+    [SerializeField] private float alarmedSpeed = 4f;
 
     // ── Events (hook up game-over screen, music stinger, etc.) ───────────────
     [Header("Events")]
@@ -43,15 +47,16 @@ public class NPCController : MonoBehaviour
     public UnityEvent OnSuspicionLost;      // NPC loses the player again
 
     // ── Internal ─────────────────────────────────────────────────────────────
-    private NavMeshAgent   _agent;
+    private NavMeshAgent _agent;
     private NPCDetectionCone _detection;
 
-    private int   _waypointIndex;
+    private int _waypointIndex;
     private float _waitTimer;
-    private bool  _waiting;
+    private bool _waiting;
 
     private float _suspicionLevel;    // 0 → 1  (1 = alarmed)
     private float _investigateTimer;
+    private float _reactionTimer;     // counts down on first detection — NPC freezes
     private Vector3 _lastKnownPlayerPos;
 
     // Public read — SuspicionMeterUI reads this
@@ -60,31 +65,34 @@ public class NPCController : MonoBehaviour
     // ── Unity ────────────────────────────────────────────────────────────────
     private void Awake()
     {
-        _agent     = GetComponent<NavMeshAgent>();
+        _agent = GetComponent<NavMeshAgent>();
         _detection = GetComponent<NPCDetectionCone>();
     }
 
     private void Update()
     {
         bool playerVisible = _detection.CanSeePlayer(out Vector3 playerPos);
-        bool playerHeard   = _detection.CanHearPlayer();
+        bool playerHeard = _detection.CanHearPlayer();
+        bool suspiciousObj = _detection.CanSeeSuspiciousObject(out float objWeight);
 
+        // Suspicious objects fill the meter slower (no direct alarm, just raises concern)
         bool detected = playerVisible || playerHeard;
+        bool anythingWrong = detected || suspiciousObj;
 
-        UpdateSuspicion(detected, playerPos);
+        UpdateSuspicion(detected, suspiciousObj, objWeight, playerPos);
         UpdateStateMachine(detected, playerPos);
     }
 
     // ── Suspicion ────────────────────────────────────────────────────────────
-    private void UpdateSuspicion(bool detected, Vector3 playerPos)
+    private void UpdateSuspicion(bool detected, bool suspiciousObj, float objWeight, Vector3 playerPos)
     {
-        if (CurrentState == NPCState.Alarmed) return;   // already triggered
+        if (CurrentState == NPCState.Alarmed) return;
 
         if (detected)
         {
             _lastKnownPlayerPos = playerPos;
             _suspicionLevel += Time.deltaTime / suspicionFillTime;
-            _suspicionLevel  = Mathf.Clamp01(_suspicionLevel);
+            _suspicionLevel = Mathf.Clamp01(_suspicionLevel);
 
             if (_suspicionLevel >= 1f)
             {
@@ -92,13 +100,30 @@ public class NPCController : MonoBehaviour
                 OnAlarmed?.Invoke();
             }
         }
+        else if (suspiciousObj)
+        {
+            // Fill rate scales by weight: body(1.0) fills at half player-speed,
+            // blood stain(0.5) fills at quarter speed, etc.
+            // So: fillRate = weight / (suspicionFillTime * 2)
+            _suspicionLevel += (Time.deltaTime * objWeight) / (suspicionFillTime * 2f);
+            _suspicionLevel = Mathf.Clamp01(_suspicionLevel);
+
+            if (CurrentState == NPCState.Patrolling)
+            {
+                // ⚠ Set destination BEFORE SetState — SetState(Suspicious) calls
+                // _agent.SetDestination(_lastKnownPlayerPos), so it must be the
+                // object position by then, not the stale player position.
+                _lastKnownPlayerPos = _detection.LastSeenSuspiciousPosition;
+                SetState(NPCState.Suspicious);
+                OnSuspicionRaised?.Invoke();
+            }
+        }
         else
         {
-            // Drain only while patrolling — keep meter while investigating
             if (CurrentState == NPCState.Patrolling)
             {
                 _suspicionLevel -= Time.deltaTime / suspicionDrainTime;
-                _suspicionLevel  = Mathf.Clamp01(_suspicionLevel);
+                _suspicionLevel = Mathf.Clamp01(_suspicionLevel);
             }
         }
     }
@@ -112,9 +137,18 @@ public class NPCController : MonoBehaviour
                 DoPatrol();
                 if (detected)
                 {
-                    SetState(NPCState.Suspicious);
+                    _lastKnownPlayerPos = playerPos;
+                    SetState(NPCState.Reacting);
                     OnSuspicionRaised?.Invoke();
                 }
+                break;
+
+            case NPCState.Reacting:
+                // NPC freezes in place — player's window to hide
+                _reactionTimer -= Time.deltaTime;
+                if (!detected) _reactionTimer = 0f;   // lost sight — skip straight back
+                if (_reactionTimer <= 0f)
+                    SetState(detected ? NPCState.Suspicious : NPCState.Patrolling);
                 break;
 
             case NPCState.Suspicious:
@@ -160,7 +194,7 @@ public class NPCController : MonoBehaviour
 
         if (!_agent.pathPending && _agent.remainingDistance <= waypointReachThreshold)
         {
-            _waiting   = true;
+            _waiting = true;
             _waitTimer = waypointWaitTime;
         }
     }
@@ -191,6 +225,12 @@ public class NPCController : MonoBehaviour
                 _agent.speed = patrolSpeed;
                 if (waypoints != null && waypoints.Length > 0)
                     _agent.SetDestination(waypoints[_waypointIndex].position);
+                break;
+
+            case NPCState.Reacting:
+                _agent.ResetPath();             // stop dead in tracks
+                _agent.velocity = Vector3.zero;
+                _reactionTimer = reactionDelay;
                 break;
 
             case NPCState.Suspicious:

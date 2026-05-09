@@ -8,6 +8,9 @@ using UnityEngine;
 public class BodyInteractable : MonoBehaviour, IInteractable, IDropNotify
 {
     private bool _pickedUp;
+    private SuspiciousObject _suspicious;
+
+    private void Awake() => _suspicious = GetComponent<SuspiciousObject>();
 
     public string GetPromptText() => "[E] Pick up body";
 
@@ -17,12 +20,16 @@ public class BodyInteractable : MonoBehaviour, IInteractable, IDropNotify
     public void Interact(PlayerInteraction player)
     {
         _pickedUp = true;
+        _suspicious?.SetVisible(false);   // NPCs no longer see the body while it's carried
         player.PickUpItem(gameObject, isBody: true);
         Debug.Log("[Body] Picked up. Carry it to the locker.");
     }
 
-    // Called by PlayerInteraction.DropItem() — allows player to pick it up again
-    public void OnDropped() => _pickedUp = false;
+    public void OnDropped()
+    {
+        _pickedUp = false;
+        _suspicious?.SetVisible(true);    // Dropped on floor — NPCs can spot it again
+    }
 }
 
 
@@ -90,32 +97,30 @@ public class BloodStainInteractable : MonoBehaviour, IInteractable
     private static int _totalStains;
     private static int _cleanedStains;
     private bool _cleaned;
+    private SuspiciousObject _suspicious;
 
     private void Awake()
     {
         _totalStains++;
+        _suspicious = GetComponent<SuspiciousObject>();
     }
 
     public string GetPromptText() => "[E] Clean blood";
 
     public bool CanInteract(PlayerInteraction player)
-        // Player must be carrying something (cleaning supplies) — not body
         => !_cleaned && player.IsCarryingItem && !player.IsCarryingBody;
 
     public void Interact(PlayerInteraction player)
     {
         _cleaned = true;
+        _suspicious?.SetVisible(false);   // Cleaned — no longer suspicious
         gameObject.SetActive(false);
         _cleanedStains++;
 
         Debug.Log($"[BloodStain] Cleaned {_cleanedStains}/{_totalStains}");
 
         if (_cleanedStains >= _totalStains)
-        {
-            // Only complete scene-clean objective once all stains are gone
-            // (Weapon clean is separate — see WeaponInteractable)
             Debug.Log("[BloodStain] All stains cleaned.");
-        }
     }
 }
 
@@ -127,6 +132,9 @@ public class BloodStainInteractable : MonoBehaviour, IInteractable
 public class WeaponInteractable : MonoBehaviour, IInteractable, IDropNotify
 {
     private bool _pickedUp;
+    private SuspiciousObject _suspicious;
+
+    private void Awake() => _suspicious = GetComponent<SuspiciousObject>();
 
     public string GetPromptText() => "[E] Pick up weapon";
 
@@ -136,12 +144,16 @@ public class WeaponInteractable : MonoBehaviour, IInteractable, IDropNotify
     public void Interact(PlayerInteraction player)
     {
         _pickedUp = true;
+        _suspicious?.SetVisible(false);   // Carried — NPCs won't see it
         player.PickUpItem(gameObject);
         Debug.Log("[Weapon] Picked up. Hide it in a drawer.");
     }
 
-    // Called by PlayerInteraction.DropItem() — allows player to pick it up again
-    public void OnDropped() => _pickedUp = false;
+    public void OnDropped()
+    {
+        _pickedUp = false;
+        _suspicious?.SetVisible(true);    // Dropped — NPCs can spot it again
+    }
 }
 
 
