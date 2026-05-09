@@ -71,6 +71,11 @@ namespace Networked
                     IsUnlocked.Value = true;
                     Code.Value = 0;
                 }
+                else if (isLabyrinthDoor && CodeFragmentManager.Instance != null)
+                {
+                    // Labyrinth door pulls its code from CodeFragmentManager (which generated it on spawn)
+                    Code.Value = CodeFragmentManager.Instance.GetFullCode();
+                }
                 else
                 {
                     Code.Value = UnityEngine.Random.Range(0, 1000);
