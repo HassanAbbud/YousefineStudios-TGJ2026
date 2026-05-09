@@ -13,8 +13,8 @@ public class NPCDetectionCone : MonoBehaviour
 {
     // ── Vision ───────────────────────────────────────────────────────────────
     [Header("Vision — Normal")]
-    [SerializeField] private float viewRange  = 10f;
-    [SerializeField] private float viewAngle  = 90f;     // full cone FOV in degrees
+    [SerializeField] private float viewRange = 10f;
+    [SerializeField] private float viewAngle = 90f;     // full cone FOV in degrees
 
     [Header("Vision — Crouching player penalty")]
     [SerializeField] private float crouchViewRange = 5f;
@@ -40,8 +40,8 @@ public class NPCDetectionCone : MonoBehaviour
     [SerializeField] private Transform eyeTransform;
 
     // ── Cached player references (found at runtime) ───────────────────────────
-    private Transform        _playerTransform;
-    private PlayerMovement   _playerMovement;
+    private Transform _playerTransform;
+    private PlayerMovement _playerMovement;
 
     private void Start()
     {
@@ -50,7 +50,7 @@ public class NPCDetectionCone : MonoBehaviour
         if (playerObj != null)
         {
             _playerTransform = playerObj.transform;
-            _playerMovement  = playerObj.GetComponent<PlayerMovement>();
+            _playerMovement = playerObj.GetComponent<PlayerMovement>();
         }
         else
         {
@@ -77,7 +77,7 @@ public class NPCDetectionCone : MonoBehaviour
         float angle = playerCrouching ? crouchViewAngle : viewAngle;
 
         Vector3 dirToPlayer = _playerTransform.position - eyeTransform.position;
-        float   dist        = dirToPlayer.magnitude;
+        float dist = dirToPlayer.magnitude;
 
         if (dist > range) return false;
 
@@ -110,6 +110,58 @@ public class NPCDetectionCone : MonoBehaviour
         return dist <= radius;
     }
 
+    // ── Suspicious objects ────────────────────────────────────────────────────
+    [Header("Suspicious Objects")]
+    [Tooltip("How far the NPC can notice a suspicious object (body, weapon on floor)")]
+    [SerializeField] private float suspiciousObjectRange = 6f;
+
+    /// <summary>World position of the last suspicious object the NPC noticed.</summary>
+    public Vector3 LastSeenSuspiciousPosition { get; private set; }
+
+    /// <summary>
+    /// Returns true if a SuspiciousObject is within range AND has line-of-sight.
+    /// Also outputs the object's suspicionWeight (0–1) so the fill rate can scale by object type:
+    ///   body = 1.0 → fills fast   |   blood stain = 0.5 → fills slowly
+    /// </summary>
+    public bool CanSeeSuspiciousObject(out float weight)
+    {
+        weight = 0f;
+
+        // Overlap sphere to find all nearby suspicious objects
+        Collider[] hits = Physics.OverlapSphere(transform.position, suspiciousObjectRange);
+
+        // Pick the MOST suspicious visible object in range (highest weight wins)
+        SuspiciousObject best = null;
+        float bestWeight = 0f;
+        Vector3 bestPos = Vector3.zero;
+
+        foreach (Collider hit in hits)
+        {
+            SuspiciousObject obj = hit.GetComponent<SuspiciousObject>();
+            if (obj == null || !obj.IsVisible) continue;
+
+            Vector3 dir = hit.transform.position - eyeTransform.position;
+            float dist = dir.magnitude;
+
+            // Line-of-sight check — wall between NPC and the object?
+            if (Physics.Raycast(eyeTransform.position, dir.normalized, dist, obstacleMask))
+                continue;
+
+            if (obj.SuspicionWeight > bestWeight)
+            {
+                bestWeight = obj.SuspicionWeight;
+                bestPos = hit.transform.position;
+                best = obj;
+            }
+        }
+
+        if (best == null) return false;
+
+        weight = bestWeight;
+        LastSeenSuspiciousPosition = bestPos;
+        return true;
+    }
+
     // ── Gizmos — visualise cone in Scene view ────────────────────────────────
     private void OnDrawGizmosSelected()
     {
@@ -133,12 +185,12 @@ public class NPCDetectionCone : MonoBehaviour
     private void DrawConeGizmo(Transform origin, float range, float angle)
     {
         Vector3 forward = origin.forward;
-        Vector3 leftDir  = Quaternion.Euler(0, -angle / 2f, 0) * forward;
-        Vector3 rightDir = Quaternion.Euler(0,  angle / 2f, 0) * forward;
+        Vector3 leftDir = Quaternion.Euler(0, -angle / 2f, 0) * forward;
+        Vector3 rightDir = Quaternion.Euler(0, angle / 2f, 0) * forward;
 
-        Gizmos.DrawRay(origin.position, leftDir  * range);
+        Gizmos.DrawRay(origin.position, leftDir * range);
         Gizmos.DrawRay(origin.position, rightDir * range);
-        Gizmos.DrawRay(origin.position, forward  * range);
+        Gizmos.DrawRay(origin.position, forward * range);
 
         // Arc approximation (8 segments)
         int segments = 8;

@@ -47,6 +47,15 @@ public class PlayerMovement : MonoBehaviour
         _cc.height = standHeight;
         _cc.center = new Vector3(0, standHeight / 2f, 0);
         _targetHeight = standHeight;
+        _targetCameraY = standHeight * 0.85f;
+
+        // Snap cameraHolder to eye height immediately — prevents it lerping up from 0 on play
+        if (cameraHolder != null)
+        {
+            Vector3 pos = cameraHolder.localPosition;
+            pos.y = _targetCameraY;
+            cameraHolder.localPosition = pos;
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
