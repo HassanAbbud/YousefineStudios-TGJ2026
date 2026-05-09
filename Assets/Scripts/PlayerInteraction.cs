@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("Carry Settings")]
     [SerializeField] private Transform carryAnchor;        // Empty child in front of camera for held items
-    
+
     // --- Public state readable by other systems ---
     public bool IsCarryingBody { get; private set; }
     public bool IsCarryingItem { get; private set; }
@@ -88,8 +88,13 @@ public class PlayerInteraction : MonoBehaviour
 
     /// <summary>Remove item from carry anchor and place it in the world</summary>
     public void DropItem()
+    // NOTE: Also calls IDropNotify.OnDropped() if present — this resets _pickedUp
+    //       on BodyInteractable / WeaponInteractable so they can be picked up again.
     {
         if (CarriedItem == null) return;
+
+        // Notify the interactable so it can reset _pickedUp → allows re-pickup
+        CarriedItem.GetComponentInParent<IDropNotify>()?.OnDropped();
 
         CarriedItem.transform.SetParent(null);
 
