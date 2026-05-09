@@ -8,11 +8,11 @@ namespace Player2
         public static CameraManager Instance { get; private set; }
 
         [Header("Render Target")]
-        [Tooltip("Shared RenderTexture all CCTV cameras will render to. Assign one from the project.")]
+        [Tooltip("Shared RenderTexture all CCTV cameras will render to. Drag CCTV_Feed here.")]
         public RenderTexture feedTexture;
 
         [Header("Cameras")]
-        [Tooltip("Auto-populated from CCTVCamera components in the scene. You can also drag them in manually.")]
+        [Tooltip("Auto-populated from CCTVCamera components in the scene.")]
         public List<CCTVCamera> cameras = new();
 
         public CCTVCamera ActiveCamera { get; private set; }
@@ -28,13 +28,10 @@ namespace Player2
 
         void Start()
         {
-            // Auto-find any CCTVCameras that didn't register via Register()
-            // This catches cameras placed before CameraManager existed.
             var found = FindObjectsByType<CCTVCamera>(FindObjectsSortMode.None);
             foreach (var c in found)
             {
                 if (!cameras.Contains(c)) cameras.Add(c);
-                // Make sure every CCTV camera renders to our shared feed texture
                 c.Cam.targetTexture = feedTexture;
             }
 
@@ -55,7 +52,7 @@ namespace Player2
 
             ActiveIndex = index;
             ActiveCamera = cameras[index];
-            ActiveCamera.Cam.targetTexture = feedTexture; // safety reassign
+            ActiveCamera.Cam.targetTexture = feedTexture;
             ActiveCamera.SetActive(true);
 
             OnCameraChanged?.Invoke(index);

@@ -32,7 +32,6 @@ namespace Player2
         void Awake()
         {
             cam = GetComponent<Camera>();
-            // Cameras start disabled; CameraManager enables one at a time
             cam.enabled = false;
         }
 
@@ -62,7 +61,6 @@ namespace Player2
             }
 
             float t = goingToB ? rotationTimer : 1f - rotationTimer;
-            // Smooth ease-in-out so it doesn't look robotic
             t = Mathf.SmoothStep(0f, 1f, t);
             float yaw = Mathf.Lerp(rotationA, rotationB, t);
 
@@ -71,7 +69,6 @@ namespace Player2
         }
 
 #if UNITY_EDITOR
-        // Visualize the rotation arc in the editor for level designers
         void OnDrawGizmosSelected()
         {
             if (type != CCTVType.Rotating) return;
