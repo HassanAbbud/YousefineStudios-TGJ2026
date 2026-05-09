@@ -13,3 +13,13 @@ public interface IInteractable
     /// <summary>Can the player interact with this right now? (e.g. locker is full, hands are full)</summary>
     bool CanInteract(PlayerInteraction player);
 }
+
+/// <summary>
+/// Implemented by objects that can be picked up AND dropped back into the world
+/// (Body, Weapon). Called by PlayerInteraction.DropItem() to reset _pickedUp
+/// so the player can pick the item up again after dropping it.
+/// </summary>
+public interface IDropNotify
+{
+    void OnDropped();
+}

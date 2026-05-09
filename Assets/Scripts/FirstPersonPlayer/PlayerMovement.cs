@@ -41,7 +41,13 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _cc = GetComponent<CharacterController>();
+
+        // Force CharacterController to match standHeight regardless of Inspector values.
+        // Center Y = height/2 so the pivot sits at the player's feet, not their torso.
+        _cc.height = standHeight;
+        _cc.center = new Vector3(0, standHeight / 2f, 0);
         _targetHeight = standHeight;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

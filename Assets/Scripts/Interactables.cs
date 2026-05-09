@@ -5,7 +5,7 @@ using UnityEngine;
 //  Requires: Player is NOT already carrying something
 //  After pickup: Player carries body to the Locker
 // ============================================================
-public class BodyInteractable : MonoBehaviour, IInteractable
+public class BodyInteractable : MonoBehaviour, IInteractable, IDropNotify
 {
     private bool _pickedUp;
 
@@ -20,6 +20,9 @@ public class BodyInteractable : MonoBehaviour, IInteractable
         player.PickUpItem(gameObject, isBody: true);
         Debug.Log("[Body] Picked up. Carry it to the locker.");
     }
+
+    // Called by PlayerInteraction.DropItem() — allows player to pick it up again
+    public void OnDropped() => _pickedUp = false;
 }
 
 
@@ -121,7 +124,7 @@ public class BloodStainInteractable : MonoBehaviour, IInteractable
 //  WEAPON  —  Objective 3: hide the murder weapon
 //  Step 1: pick it up. Step 2: put in drawer (DrawerInteractable)
 // ============================================================
-public class WeaponInteractable : MonoBehaviour, IInteractable
+public class WeaponInteractable : MonoBehaviour, IInteractable, IDropNotify
 {
     private bool _pickedUp;
 
@@ -136,6 +139,9 @@ public class WeaponInteractable : MonoBehaviour, IInteractable
         player.PickUpItem(gameObject);
         Debug.Log("[Weapon] Picked up. Hide it in a drawer.");
     }
+
+    // Called by PlayerInteraction.DropItem() — allows player to pick it up again
+    public void OnDropped() => _pickedUp = false;
 }
 
 
