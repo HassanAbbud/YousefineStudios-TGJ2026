@@ -48,8 +48,10 @@ namespace UI
 
         void OnMainMenu()
         {
-            // Always reset time scale before changing scenes
             Time.timeScale = 1f;
+
+            if (Lobby.VoiceChatManager.Instance != null)
+                _ = Lobby.VoiceChatManager.Instance.LeaveChannelAsync();
 
             if (LobbyManager.Instance != null)
                 _ = LobbyManager.Instance.LeaveLobbyAsync();

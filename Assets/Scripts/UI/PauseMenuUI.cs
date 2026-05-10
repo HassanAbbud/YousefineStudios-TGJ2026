@@ -147,6 +147,9 @@ namespace UI
         {
             Time.timeScale = 1f;
 
+            if (Lobby.VoiceChatManager.Instance != null)
+                _ = Lobby.VoiceChatManager.Instance.LeaveChannelAsync();
+
             if (LobbyManager.Instance != null)
                 _ = LobbyManager.Instance.LeaveLobbyAsync();
 

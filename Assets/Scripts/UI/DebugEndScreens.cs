@@ -1,16 +1,26 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+namespace UI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /// <summary>
+    /// TEMP: press F1 to trigger Win, F2 to trigger Lose. For testing only — remove before final build.
+    /// </summary>
+    public class DebugEndScreens : MonoBehaviour
     {
-        
-    }
+        void Update()
+        {
+            if (GameStateManager.Instance == null) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                Debug.Log("[Debug] Triggering Win");
+                GameStateManager.Instance.TriggerWin();
+            }
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                Debug.Log("[Debug] Triggering Lose");
+                GameStateManager.Instance.TriggerLose();
+            }
+        }
     }
 }
