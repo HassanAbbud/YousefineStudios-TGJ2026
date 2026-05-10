@@ -17,11 +17,16 @@ namespace Lobby
         public Button createButton;
         public Button joinButton;
         public Button quitButton;
-        public Button aboutButton;
+        public Button creditButton;
         public Button backButton;
+        public Button backButton2;
+        public Button helpButton;
+
+
 
         [Header("Panels")]
-        public GameObject aboutPanel;
+        public GameObject creditPanel;
+        public GameObject helpPanel;
 
         [Header("Status")]
         public TMP_Text statusText;
@@ -42,8 +47,10 @@ namespace Lobby
             joinButton.onClick.AddListener(() => _ = OnJoin());
             if (loadingOverlay != null) loadingOverlay.SetActive(false);
             quitButton.onClick.AddListener(OnQuit);
-            aboutButton.onClick.AddListener(Open);
+            creditButton.onClick.AddListener(Open);
             backButton.onClick.AddListener(Close);
+            helpButton.onClick.AddListener(OpenHelp);
+            backButton2.onClick.AddListener(CloseHelp);
         }
 
         void OnEnable()
@@ -131,12 +138,22 @@ namespace Lobby
 
         private void Open()
         {
-            aboutPanel.SetActive(true);
+            creditPanel.SetActive(true);
         }
 
         private void Close()
         {
-            aboutPanel.SetActive(false);
+            creditPanel.SetActive(false);
+        }
+
+        private void OpenHelp()
+        {
+            helpPanel.SetActive(true);
+        }
+
+        private void CloseHelp()
+        {
+            helpPanel.SetActive(false);
         }
     }
 }
