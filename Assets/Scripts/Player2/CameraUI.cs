@@ -46,6 +46,8 @@ namespace Player2
 
         void Start()
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             CameraManager.Instance.OnCameraChanged += HandleCameraChanged;
             HandleCameraChanged(CameraManager.Instance.ActiveIndex);
 
