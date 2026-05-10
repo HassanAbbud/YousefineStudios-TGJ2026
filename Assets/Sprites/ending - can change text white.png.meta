@@ -1,0 +1,321 @@
+fileFormatVersion: 2
+guid: 34f9e50dbc66928478a1360e8e3e5873
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HudUI_WINTEXT
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 463
+        width: 599
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab1a57f9786d5642b1773ba32b8720d
+      internalID: -2100826073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_WinText2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 349
+        width: 690
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d74b0ca10e95c004794fab0e4f3d02b6
+      internalID: 1360172222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_FACEBIG
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 171
+        width: 381
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561dca2d2eaca6243a029fadf5528ffa
+      internalID: 143018539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_MainMenuBUTTON
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 48
+        width: 218
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1eb9ccdcddc9e84099dadfcfb12c961
+      internalID: 894740226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_QuitBUTTON
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 50
+        width: 218
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7681e3e7cfeb58247a494786200733c5
+      internalID: -899350898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 635d1b1fdd4be974987389b32c97de8c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      HudUI_FACEBIG: 143018539
+      HudUI_MainMenuBUTTON: 894740226
+      HudUI_QuitBUTTON: -899350898
+      HudUI_WINTEXT: -2100826073
+      HudUI_WinText2: 1360172222
+      ending - can change text white_1: -1146790585
+      ending - can change text white_10: -1709295884
+      ending - can change text white_11: -1680874334
+      ending - can change text white_12: 74477133
+      ending - can change text white_13: 2121819859
+      ending - can change text white_14: 576368931
+      ending - can change text white_15: -690022950
+      ending - can change text white_17: 1197733336
+      ending - can change text white_18: -290725325
+      ending - can change text white_19: -894728792
+      ending - can change text white_2: -1472003297
+      ending - can change text white_20: -53848847
+      ending - can change text white_21: -960289437
+      ending - can change text white_22: 428992277
+      ending - can change text white_23: -346773124
+      ending - can change text white_24: 707828538
+      ending - can change text white_25: 1716535213
+      ending - can change text white_26: 2018051216
+      ending - can change text white_27: -1970869737
+      ending - can change text white_28: 1148278
+      ending - can change text white_29: -1438340558
+      ending - can change text white_3: 1191187589
+      ending - can change text white_30: -1547877138
+      ending - can change text white_31: -1536793852
+      ending - can change text white_32: 601571877
+      ending - can change text white_33: 962979999
+      ending - can change text white_34: -696097308
+      ending - can change text white_35: 894853744
+      ending - can change text white_36: -980867920
+      ending - can change text white_37: -494740777
+      ending - can change text white_38: -2127865998
+      ending - can change text white_39: -1623938904
+      ending - can change text white_4: -1199893058
+      ending - can change text white_40: 1826477596
+      ending - can change text white_41: 1844413644
+      ending - can change text white_42: -1536104442
+      ending - can change text white_43: -436895256
+      ending - can change text white_44: 280706564
+      ending - can change text white_45: -1004612524
+      ending - can change text white_46: 1180916808
+      ending - can change text white_47: -1066328961
+      ending - can change text white_49: 304978515
+      ending - can change text white_5: -1607575529
+      ending - can change text white_50: -214023159
+      ending - can change text white_6: -803769866
+      ending - can change text white_7: -1086375414
+      ending - can change text white_8: 392151018
+      ending - can change text white_9: 1881597313
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

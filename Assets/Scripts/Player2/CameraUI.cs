@@ -46,11 +46,23 @@ namespace Player2
 
         void Start()
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             CameraManager.Instance.OnCameraChanged += HandleCameraChanged;
             HandleCameraChanged(CameraManager.Instance.ActiveIndex);
 
             if (feedImage != null && CameraManager.Instance.feedTexture != null)
                 feedImage.texture = CameraManager.Instance.feedTexture;
+        }
+
+        void Update()
+        {
+            // Camera operator: keep cursor unlocked at all times.
+            // Re-asserts in case something else (input field, scene transition, etc.) changes it.
+            if (Cursor.lockState != CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.None;
+            if (!Cursor.visible)
+                Cursor.visible = true;
         }
 
         void OnDestroy()

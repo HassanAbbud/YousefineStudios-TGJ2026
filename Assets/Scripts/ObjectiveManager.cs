@@ -58,6 +58,10 @@ public class ObjectiveManager : MonoBehaviour
         {
             Debug.Log("[ObjectiveManager] ALL OBJECTIVES COMPLETE — YOU WIN!");
             OnAllObjectivesComplete?.Invoke();
+
+            // Trigger networked win screen on both clients
+            if (UI.GameStateManager.Instance != null)
+                UI.GameStateManager.Instance.TriggerWin();
         }
     }
 

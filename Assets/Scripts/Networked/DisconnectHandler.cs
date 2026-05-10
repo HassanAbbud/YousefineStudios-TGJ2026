@@ -47,6 +47,11 @@ namespace Networked
         {
             gameEnding = true;
 
+            // Make sure the cursor is unlocked before going back to the main menu —
+            // if the FP player died or got disconnected mid-game, their cursor is still locked.
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             if (LobbyManager.Instance != null)
                 _ = LobbyManager.Instance.LeaveLobbyAsync();
 
