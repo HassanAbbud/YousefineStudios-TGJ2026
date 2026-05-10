@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 3
+  cameraIndex: 4
   activeHighlight: {fileID: 543650932371692036}
 --- !u!1 &492172286448558510
 GameObject:
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 2
+  cameraIndex: 3
   activeHighlight: {fileID: 492172286448558510}
 --- !u!1 &543650932371692036
 GameObject:
@@ -764,7 +764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 5
+  cameraIndex: 6
   activeHighlight: {fileID: 8591338938363936836}
 --- !u!1 &1643315108655634256
 GameObject:
@@ -1914,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 1
+  cameraIndex: 2
   activeHighlight: {fileID: 6556045280356585553}
 --- !u!1 &5967172008607739520
 GameObject:
@@ -2714,7 +2714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 4
+  cameraIndex: 5
   activeHighlight: {fileID: 4870786250300404109}
 --- !u!1 &7661032243808489396
 GameObject:
@@ -2984,7 +2984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 6
+  cameraIndex: 7
   activeHighlight: {fileID: 3801267204120434169}
 --- !u!1 &8242550799811600307
 GameObject:
@@ -3505,7 +3505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e813d5ca63231da4786ae99fb3a7ca18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player2.MinimapRegion
-  cameraIndex: 0
+  cameraIndex: 1
   activeHighlight: {fileID: 1643315108655634256}
 --- !u!1 &9130380712580622091
 GameObject:

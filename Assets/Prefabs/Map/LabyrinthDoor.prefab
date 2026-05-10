@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7737691329774129990
+--- !u!1 &4265746737339164870
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,81 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2395055175419162942}
+  - component: {fileID: 326767651168777889}
+  - component: {fileID: 2363984793984754850}
+  - component: {fileID: 7521675301862776198}
+  - component: {fileID: 3979798812150472798}
+  - component: {fileID: 8144317924349705611}
+  - component: {fileID: 2147665477974231912}
   m_Layer: 6
-  m_Name: Pivot
+  m_Name: LabyrinthDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2395055175419162942
+--- !u!4 &326767651168777889
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7737691329774129990}
+  m_GameObject: {fileID: 4265746737339164870}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.511, z: 0.581}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -36.63, y: 1.896, z: 21.75}
+  m_LocalScale: {x: 0.2, y: 2.5, z: 2.1230576}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1139816730175390579}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8196094102303394732
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1139816730175390579}
-  - component: {fileID: 7861958485695972658}
-  - component: {fileID: 2168989467434396038}
-  - component: {fileID: 8078647489619471218}
-  - component: {fileID: 933492175854847921}
-  - component: {fileID: 4472648124182962254}
-  m_Layer: 6
-  m_Name: TestDoor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1139816730175390579
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196094102303394732}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.59, y: 1.06, z: 1.89}
-  m_LocalScale: {x: 0.2, y: 2.5, z: 1.2}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2395055175419162942}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7861958485695972658
+--- !u!33 &2363984793984754850
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196094102303394732}
+  m_GameObject: {fileID: 4265746737339164870}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2168989467434396038
+--- !u!23 &7521675301862776198
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196094102303394732}
+  m_GameObject: {fileID: 4265746737339164870}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -125,13 +93,13 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8078647489619471218
+--- !u!65 &3979798812150472798
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196094102303394732}
+  m_GameObject: {fileID: 4265746737339164870}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -146,19 +114,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &933492175854847921
+--- !u!114 &8144317924349705611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196094102303394732}
+  m_GameObject: {fileID: 4265746737339164870}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3687238367
+  GlobalObjectIdHash: 1089019077
   InScenePlacedSourceGlobalObjectIdHash: 67879383
   DeferredDespawnTick: 0
   Ownership: 1
@@ -171,27 +139,27 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!114 &4472648124182962254
+--- !u!114 &2147665477974231912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196094102303394732}
+  m_GameObject: {fileID: 4265746737339164870}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288df3f57aa5d864a8b9af68b317e586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Networked.InteractableDoor
   ShowTopMostFoldoutHeaderGroup: 1
-  doorName: Test Door
-  isLabyrinthDoor: 0
+  doorName: Coworkarea door
+  isLabyrinthDoor: 1
   startsUnlocked: 0
   codeDigitCount: 3
   closedAngle: 0
   openAngle: 90
   swingDuration: 0.5
-  pivot: {fileID: 2395055175419162942}
+  pivot: {fileID: 0}
   audioSource: {fileID: 0}
   openClip: {fileID: 0}
   closeClip: {fileID: 0}
