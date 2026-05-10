@@ -2678,6 +2678,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3577664063720847788, guid: 19416eb44b5944366a1fc262748af83b, type: 3}
   m_PrefabInstance: {fileID: 437829561}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &439919847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439919849}
+  - component: {fileID: 439919848}
+  m_Layer: 0
+  m_Name: ObjectiveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &439919848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439919847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09054fd747313f6459b4d8ed1c553ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectiveManager
+  bodyHidden: 0
+  sceneClean: 0
+  weaponHidden: 0
+  OnObjectiveCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAllObjectivesComplete:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &439919849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439919847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -34.84362, y: -0.001, z: -4.63735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &441551979
 GameObject:
   m_ObjectHideFlags: 0
@@ -12006,3 +12059,4 @@ SceneRoots:
   - {fileID: 1897646681}
   - {fileID: 551575572}
   - {fileID: 916255729}
+  - {fileID: 439919849}
