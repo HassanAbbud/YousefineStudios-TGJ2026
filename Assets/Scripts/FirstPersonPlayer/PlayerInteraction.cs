@@ -1,27 +1,24 @@
+using Unity.Netcode;
 using UnityEngine;
-using TMPro;                  // Remove if not using TextMeshPro — swap for UnityEngine.UI.Text
+using TMPro;
 
 /// <summary>
-/// Player 2 - Interaction System
-/// Casts a ray from the camera to detect IInteractable objects.
-/// Drives the HUD prompt ("E to pick up body", etc.)
-/// Tracks what Player 2 is currently carrying.
+/// Player 1 - Interaction System. Owner-only input.
 /// </summary>
-public class PlayerInteraction : MonoBehaviour
+public class PlayerInteraction : NetworkBehaviour
 {
     [Header("Raycast Settings")]
     [SerializeField] private float interactRange = 2.5f;
-    [SerializeField] private LayerMask interactableMask;   // Set to your "Interactable" layer in Inspector
+    [SerializeField] private LayerMask interactableMask;
     [SerializeField] private Transform cameraTransform;
 
     [Header("HUD")]
-    [SerializeField] private TextMeshProUGUI promptText;   // Assign a UI Text in Inspector
-    [SerializeField] private GameObject promptPanel;       // The panel that wraps the prompt
+    [SerializeField] private TextMeshProUGUI promptText;
+    [SerializeField] private GameObject promptPanel;
 
     [Header("Carry Settings")]
-    [SerializeField] private Transform carryAnchor;        // Empty child in front of camera for held items
+    [SerializeField] private Transform carryAnchor;
 
-    // --- Public state readable by other systems ---
     public bool IsCarryingBody { get; private set; }
     public bool IsCarryingItem { get; private set; }
     public GameObject CarriedItem { get; private set; }
@@ -30,12 +27,14 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
+        // Only the owner runs raycasts and reads input.
+        if (!IsOwner) return;
+
         ScanForInteractable();
 
         if (Input.GetKeyDown(KeyCode.E) && _currentTarget != null && _currentTarget.CanInteract(this))
             _currentTarget.Interact(this);
 
-        // Drop carried item
         if (Input.GetKeyDown(KeyCode.G) && IsCarryingItem)
             DropItem();
     }
@@ -58,17 +57,13 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
 
-        // Nothing found
         _currentTarget = null;
         HidePrompt();
     }
 
-    // ---- Called by Interactable objects ----
-
-    /// <summary>Attach an item to the carry anchor (e.g. body in a trash bag, weapon)</summary>
     public void PickUpItem(GameObject item, bool isBody = false)
     {
-        if (CarriedItem != null) return; // Already holding something
+        if (CarriedItem != null) return;
 
         CarriedItem = item;
         IsCarryingBody = isBody;
@@ -78,7 +73,6 @@ public class PlayerInteraction : MonoBehaviour
         item.transform.localPosition = Vector3.zero;
         item.transform.localRotation = Quaternion.identity;
 
-        // Disable physics while held
         Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb != null) rb.isKinematic = true;
 
@@ -86,14 +80,10 @@ public class PlayerInteraction : MonoBehaviour
         if (col != null) col.enabled = false;
     }
 
-    /// <summary>Remove item from carry anchor and place it in the world</summary>
     public void DropItem()
-    // NOTE: Also calls IDropNotify.OnDropped() if present — this resets _pickedUp
-    //       on BodyInteractable / WeaponInteractable so they can be picked up again.
     {
         if (CarriedItem == null) return;
 
-        // Notify the interactable so it can reset _pickedUp → allows re-pickup
         CarriedItem.GetComponentInParent<IDropNotify>()?.OnDropped();
 
         CarriedItem.transform.SetParent(null);
@@ -109,7 +99,6 @@ public class PlayerInteraction : MonoBehaviour
         IsCarryingItem = false;
     }
 
-    /// <summary>Silently remove item (e.g. placed into locker — item is destroyed or hidden)</summary>
     public void ConsumeCarriedItem()
     {
         if (CarriedItem == null) return;
@@ -119,7 +108,6 @@ public class PlayerInteraction : MonoBehaviour
         IsCarryingItem = false;
     }
 
-    // ---- HUD helpers ----
     private void ShowPrompt(string text)
     {
         if (promptPanel != null) promptPanel.SetActive(true);

@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/03_Game.unity
     guid: 209e9917e1ca2cc47bcf16a46bbb4cf2
-  - enabled: 1
+  - enabled: 0
     path: Assets/OutdoorsScene.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScenePlayer2Camera.unity
     guid: b58ae552ba7a0304590fbf125ac709c3
   m_configObjects:

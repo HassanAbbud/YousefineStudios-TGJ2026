@@ -92,11 +92,21 @@ namespace Lobby
             startGameButton.interactable = false;
             await LobbyManager.Instance.HostStartGameAsync();
 
-            // Once host's Netcode is up, load the game scene through Netcode's scene manager
-            // so all clients follow.
-            Unity.Netcode.NetworkManager.Singleton.SceneManager.LoadScene(
-                gameScene,
-                UnityEngine.SceneManagement.LoadSceneMode.Single);
+            // Wait one frame so NetworkManager.SceneManager is ready
+            await System.Threading.Tasks.Task.Yield();
+
+            // Load via Netcode's scene manager so all clients follow
+            if (Unity.Netcode.NetworkManager.Singleton != null
+                && Unity.Netcode.NetworkManager.Singleton.SceneManager != null)
+            {
+                Unity.Netcode.NetworkManager.Singleton.SceneManager.LoadScene(
+                    gameScene,
+                    UnityEngine.SceneManagement.LoadSceneMode.Single);
+            }
+            else
+            {
+                Debug.LogError("[LobbyUI] NetworkManager.SceneManager not ready!");
+            }
         }
 
         async void OnLeave()
