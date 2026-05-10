@@ -1,9 +1,11 @@
+using Lobby;
 using Unity.Netcode;
 using UnityEngine;
 
 /// <summary>
 /// Player 1 (first-person) movement controller.
-/// Networked: input only runs for the owner client. Position syncs via NetworkTransform.
+/// Networked: input only runs for the owner client when they actually picked
+/// the first-person role. Position syncs via ClientNetworkTransform (owner authoritative).
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : NetworkBehaviour
@@ -36,6 +38,8 @@ public class PlayerMovement : NetworkBehaviour
     public bool IsMoving { get; private set; }
     public bool IsCrouching => _isCrouching;
 
+    private bool _amFirstPerson;
+
     private void Awake()
     {
         _cc = GetComponent<CharacterController>();
@@ -54,22 +58,28 @@ public class PlayerMovement : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (IsOwner)
+        _amFirstPerson = IsOwner
+            && PlayerSession.Instance != null
+            && PlayerSession.Instance.SelectedRole == PlayerRole.Player1_FirstPerson;
+
+        if (_amFirstPerson)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
-        else
+
+        if (!IsOwner)
         {
-            // Disable the CharacterController for non-owners so it doesn't fight NetworkTransform
+            // Disable the CharacterController for non-owners — they receive position
+            // updates via ClientNetworkTransform, no need for local CC simulation.
             _cc.enabled = false;
         }
     }
 
     private void Update()
     {
-        // Only the owner client processes input. Other clients see this player via NetworkTransform sync.
-        if (!IsOwner) return;
+        // Only the owning first-person player runs input.
+        if (!IsOwner || !_amFirstPerson) return;
 
         HandleMouseLook();
         HandleCrouch();
@@ -124,7 +134,8 @@ public class PlayerMovement : NetworkBehaviour
     public void SetInputEnabled(bool enabled)
     {
         this.enabled = enabled;
-        if (!enabled) Cursor.lockState = CursorLockMode.None;
-        else Cursor.lockState = CursorLockMode.Locked;
+        if (!_amFirstPerson) return;
+        Cursor.lockState = enabled ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !enabled;
     }
 }

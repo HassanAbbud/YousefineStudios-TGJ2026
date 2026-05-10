@@ -775,6 +775,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &91398473 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 91398472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1 &96339211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,6 +2081,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &304167085 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 304167084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1 &351077575
 GameObject:
   m_ObjectHideFlags: 0
@@ -5519,6 +5541,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &1098903576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 1098903575}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1001 &1108249331
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8480,6 +8513,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &1731141110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 1731141109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1001 &1755321366
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8971,6 +9015,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &1838366183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 1838366182}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1001 &1841342958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9044,6 +9099,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &1841342959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 1841342958}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1 &1845516857
 GameObject:
   m_ObjectHideFlags: 0
@@ -9317,6 +9383,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: cameras.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2117464277}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1841342959}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1731141110}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1838366183}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[4]'
+      value: 
+      objectReference: {fileID: 304167085}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[5]'
+      value: 
+      objectReference: {fileID: 91398473}
+    - target: {fileID: 4894026135219378330, guid: e73f3a8938df4a141934476bcc9bbb73, type: 3}
+      propertyPath: 'cameras.Array.data[6]'
+      value: 
+      objectReference: {fileID: 1098903576}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10299,6 +10397,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+--- !u!114 &2117464277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5536644908896825962, guid: 842f69a5ea184ea42ba2c831e5f87bcd, type: 3}
+  m_PrefabInstance: {fileID: 2117464276}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3b639e11d6520645b99ebd08f014b83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player2.CCTVCamera
 --- !u!1 &2127528443
 GameObject:
   m_ObjectHideFlags: 0

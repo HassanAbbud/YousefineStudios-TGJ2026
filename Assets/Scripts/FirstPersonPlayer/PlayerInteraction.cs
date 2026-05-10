@@ -1,9 +1,12 @@
+using Lobby;
 using Unity.Netcode;
 using UnityEngine;
 using TMPro;
 
 /// <summary>
 /// Player 1 - Interaction System. Owner-only input.
+/// Lives on the shared NetworkPlayer prefab — gates by role so it doesn't run
+/// on Player 2 (camera operator).
 /// </summary>
 public class PlayerInteraction : NetworkBehaviour
 {
@@ -26,10 +29,25 @@ public class PlayerInteraction : NetworkBehaviour
     public bool HasCleaningKit { get; set; }   // set by CleaningSupplyInteractable
     private IInteractable _currentTarget;
 
+    private bool _amFirstPerson;
+
+    public override void OnNetworkSpawn()
+    {
+        _amFirstPerson = IsOwner
+            && PlayerSession.Instance != null
+            && PlayerSession.Instance.SelectedRole == PlayerRole.Player1_FirstPerson;
+
+        // Make sure the prompt UI is hidden for everyone but the owning FP player.
+        if (!_amFirstPerson)
+        {
+            if (promptPanel != null) promptPanel.SetActive(false);
+        }
+    }
+
     private void Update()
     {
-        // Only the owner runs raycasts and reads input.
-        if (!IsOwner) return;
+        // Only the actual first-person owner runs raycasts and reads input.
+        if (!IsOwner || !_amFirstPerson) return;
 
         ScanForInteractable();
 
@@ -42,6 +60,8 @@ public class PlayerInteraction : NetworkBehaviour
 
     private void ScanForInteractable()
     {
+        if (cameraTransform == null) return;
+
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
         if (Physics.Raycast(ray, out RaycastHit hit, interactRange, interactableMask))

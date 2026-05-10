@@ -3,6 +3,14 @@ using UnityEngine;
 
 namespace Player2
 {
+    /// <summary>
+    /// Manages all CCTV cameras and which one is active.
+    ///
+    /// CAMERA ORDER:
+    /// To control button-to-camera mapping, drag cameras into the 'cameras' list
+    /// in the Inspector in the order you want them (index 0 = button 1, etc.).
+    /// If left empty, the manager auto-fills from the scene (alphabetical order).
+    /// </summary>
     public class CameraManager : MonoBehaviour
     {
         public static CameraManager Instance { get; private set; }
@@ -11,8 +19,10 @@ namespace Player2
         [Tooltip("Shared RenderTexture all CCTV cameras will render to. Drag CCTV_Feed here.")]
         public RenderTexture feedTexture;
 
-        [Header("Cameras")]
-        [Tooltip("Auto-populated from CCTVCamera components in the scene.")]
+        [Header("Cameras (drop in order — index 0 = first button, etc.)")]
+        [Tooltip("Drag CCTV_Cam_01, CCTV_Cam_02, ... into this list in the order you want " +
+                 "them mapped to the minimap buttons. If left empty, cameras will be auto-found " +
+                 "in alphabetical order.")]
         public List<CCTVCamera> cameras = new();
 
         public CCTVCamera ActiveCamera { get; private set; }
@@ -28,10 +38,21 @@ namespace Player2
 
         void Start()
         {
-            var found = FindObjectsByType<CCTVCamera>(FindObjectsSortMode.None);
-            foreach (var c in found)
+            // If the inspector list is empty, auto-fill from the scene (alphabetical order
+            // by name, so CCTV_Cam_01 < CCTV_Cam_02 < ...).
+            if (cameras == null || cameras.Count == 0)
             {
-                if (!cameras.Contains(c)) cameras.Add(c);
+                cameras = new List<CCTVCamera>();
+                var found = FindObjectsByType<CCTVCamera>(FindObjectsSortMode.None);
+                System.Array.Sort(found, (a, b) =>
+                    string.Compare(a.name, b.name, System.StringComparison.Ordinal));
+                cameras.AddRange(found);
+            }
+
+            // Bind every camera to the shared feed texture.
+            foreach (var c in cameras)
+            {
+                if (c == null) continue;
                 c.Cam.targetTexture = feedTexture;
             }
 
@@ -47,6 +68,7 @@ namespace Player2
         {
             if (index < 0 || index >= cameras.Count) return;
             if (index == ActiveIndex) return;
+            if (cameras[index] == null) return;
 
             if (ActiveCamera != null) ActiveCamera.SetActive(false);
 

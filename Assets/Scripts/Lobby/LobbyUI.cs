@@ -28,6 +28,10 @@ namespace Lobby
 
         void Awake()
         {
+            // Lobby is a UI scene — make sure the cursor is free.
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             player1Slot.Setup(PlayerRole.Player1_FirstPerson, "PLAYER 1\nFIRST PERSON");
             player2Slot.Setup(PlayerRole.Player2_Camera, "PLAYER 2\nCAMERA OPERATOR");
 
@@ -111,6 +115,10 @@ namespace Lobby
 
         async void OnLeave()
         {
+            // Make sure the cursor is free before bouncing back to the main menu.
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             await LobbyManager.Instance.LeaveLobbyAsync();
             GameNetworkManager.Instance.Shutdown();
             SceneManager.LoadScene(mainMenuScene);
