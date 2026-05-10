@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4848651371793782884}
   - component: {fileID: 3701334423133684019}
   - component: {fileID: 1188589900110019556}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirstPerson Mesh
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1225,6 +1225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7537389883962043544}
     m_Modifications:
+    - target: {fileID: 149862541989402627, guid: d5375965b0258734eabdf36c1fe8b35b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 827017198822621921, guid: d5375965b0258734eabdf36c1fe8b35b, type: 3}
       propertyPath: m_Name
       value: Player2Canvas

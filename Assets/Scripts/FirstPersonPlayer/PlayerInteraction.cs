@@ -23,6 +23,7 @@ public class PlayerInteraction : NetworkBehaviour
     public bool IsCarryingItem { get; private set; }
     public GameObject CarriedItem { get; private set; }
 
+    public bool HasCleaningKit { get; set; }   // set by CleaningSupplyInteractable
     private IInteractable _currentTarget;
 
     private void Update()

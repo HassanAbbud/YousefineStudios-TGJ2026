@@ -18,12 +18,16 @@ namespace Networked
         public string doorName = "Door";
 
         [Header("Code Settings")]
-        [Tooltip("Labyrinth doors get their code from 3 separate fragment pickups (handled by CodeFragmentManager). " +
+        [Tooltip("Labyrinth doors get their code from separate fragment pickups (handled by CodeFragmentManager). " +
                  "Standard doors get a random code at game start, displayed on a sticky note nearby.")]
         public bool isLabyrinthDoor = false;
 
         [Tooltip("If true, this door starts unlocked (no code needed).")]
         public bool startsUnlocked = false;
+
+        [Tooltip("How many digits the code modal should expect. Labyrinth doors use 2, normal doors use 3. " +
+                 "This is auto-set at spawn for labyrinth doors.")]
+        public int codeDigitCount = 3;
 
         [Header("Animation")]
         public float closedAngle = 0f;
@@ -58,7 +62,10 @@ namespace Networked
         Action<bool> _pendingCallback;
 
         public Transform Transform => transform;
-        public string CodeString => Code.Value.ToString("D3");
+        public string CodeString => Code.Value.ToString(codeDigitCount == 2 ? "D2" : "D3");
+
+        // ICodeInteractable interface — tells CameraUI how many digits to expect
+        public int CodeDigitCount => codeDigitCount;
 
         public override void OnNetworkSpawn()
         {
@@ -73,12 +80,14 @@ namespace Networked
                 }
                 else if (isLabyrinthDoor && CodeFragmentManager.Instance != null)
                 {
-                    // Labyrinth door pulls its code from CodeFragmentManager (which generated it on spawn)
+                    // Labyrinth door pulls its 2-digit code from CodeFragmentManager
                     Code.Value = CodeFragmentManager.Instance.GetFullCode();
+                    codeDigitCount = 2;
                 }
                 else
                 {
                     Code.Value = UnityEngine.Random.Range(0, 1000);
+                    codeDigitCount = 3;
                 }
                 IsOpen.Value = false;
             }
@@ -121,7 +130,6 @@ namespace Networked
 
         void HandleUnlockedChanged(bool prev, bool now)
         {
-            // If we have a pending callback waiting on the unlock result, fire it now.
             if (_pendingCallback != null)
             {
                 var cb = _pendingCallback;
@@ -154,7 +162,7 @@ namespace Networked
             }
         }
 
-        // ===== ICodeInteractable (called from CameraUI when player submits a code) =====
+        // ===== ICodeInteractable =====
         public void TryUnlock(string enteredCode, Action<bool> callback)
         {
             if (!int.TryParse(enteredCode, out int parsed))
@@ -163,17 +171,14 @@ namespace Networked
                 return;
             }
 
-            // Already unlocked? Short-circuit.
             if (IsUnlocked.Value)
             {
                 callback?.Invoke(true);
                 return;
             }
 
-            // Send to server for validation
             SubmitCodeServerRpc(parsed);
 
-            // Stash the callback. It fires when IsUnlocked changes (success) or after timeout (fail).
             _pendingCallback = callback;
             Invoke(nameof(TimeoutCallback), 1.0f);
         }
@@ -206,7 +211,7 @@ namespace Networked
             IsOpen.Value = !IsOpen.Value;
         }
 
-        // ===== First-person player interaction (for Player 2 walking up to the door) =====
+        // ===== First-person player interaction =====
         public void OnFirstPersonInteract()
         {
             if (!IsUnlocked.Value)
