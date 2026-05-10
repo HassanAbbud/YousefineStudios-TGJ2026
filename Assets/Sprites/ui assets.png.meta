@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,12 +134,628 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI_ButtonBG
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 462
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d865793710a4340b6d4ad4c0ae55a2
+      internalID: -432468190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MainMenuButton
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 463
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43658ebefe71a4d41b3231047a78fe39
+      internalID: 1895578689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_LeaveButton
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 465
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58eed75ff899066409d83f11822927c2
+      internalID: -646649978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Knifestained
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 457
+        width: 70
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3363d1280eed043439083570a1cad886
+      internalID: -1014823518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Camera
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 471
+        width: 98
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb4364c3b814cec458158cdc8ea67893
+      internalID: -1185223855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PlayButton
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 373
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f9971dabbdd8d849b8c5d4253c775b2
+      internalID: -1142980777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_QuitButton
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 373
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2650c511a32af4398a6d3ca5db79a8
+      internalID: 1609109490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_SelectButton
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 395
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a39480caaa9d364abbb7409a8a9efbb
+      internalID: 181073393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_DarkBloodStain
+      rect:
+        serializedVersion: 2
+        x: 866
+        y: 385
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe53ae712efe7424daa83f8aa5c25d01
+      internalID: 1594227386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui assets_9
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 411
+        width: 9
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844ba21922f23de4eb258c02a2bb453c
+      internalID: 395651238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_LightBloodStain
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 392
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c046c291b3b9954aaccadb57284b9d4
+      internalID: 412049416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_HowToButton
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 282
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e2786a189206c94e941a454a548e003
+      internalID: 457970938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Player1
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 22
+        width: 321
+        height: 308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff60f322611756841a628aff7c0e0218
+      internalID: 703920839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui assets_13
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 279
+        width: 281
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22da4bc00e6f4e40aa251c6d62d7448
+      internalID: 364939018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_EmptyVolume
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 241
+        width: 280
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6937b7dc03b1ef4e8115848906d863c
+      internalID: -1074028150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_ButtonBG
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 185
+        width: 164
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086f0b6ffca2d4c4da58b593fe7e5eb6
+      internalID: 1310310329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_FullVolume
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 191
+        width: 280
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f9119576ac4a647995f226ede06eed
+      internalID: 1134176861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_CopyButton
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 122
+        width: 164
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69b132fea9d34304791f4b43ed63ab87
+      internalID: -212334823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_Mute
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 163
+        width: 43
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6a65d05ceffb1d4497f67b8a2626655
+      internalID: -1126801648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_Unmute
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 163
+        width: 64
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf32f354ed2577b418110a9114e5c12f
+      internalID: 1672060989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_QuitButton
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 66
+        width: 164
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a13b2516f23dc4db228231974e2dd7
+      internalID: -1205230588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_MuteButton
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 93
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8f300919d479ee45a92428e1a8b933c
+      internalID: 277866288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui assets_30
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 92
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007834eac11113840ae5ee2547fba4ae
+      internalID: 1698786344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HudUI_MuteBG
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 92
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fedab2567a79f548ad41540bdc9c66b
+      internalID: 891627803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui assets_36
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 24
+        width: 69
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c08c568bc258a414a9966e30de284300
+      internalID: 1216431247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_MuteFace
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 41
+        width: 48
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d892d47019d36344fb2a6e321f30b699
+      internalID: -1577952694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_UnmuteFace
+      rect:
+        serializedVersion: 2
+        x: 842
+        y: 36
+        width: 58
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a984f20b2bdb64b9bc986636d11784
+      internalID: 618327343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ui assets_0
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 96
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28487d70426c1ee489db4646a9ed8064
+      internalID: -1019164996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: eef5f172f77bfc049a72f1264c577298
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +763,50 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      HudUI_ButtonBG: 1310310329
+      HudUI_MuteBG: 891627803
+      HudUI_MuteButton: 277866288
+      HudUI_QuitButton: -1205230588
+      UIText_Mute: -1126801648
+      UIText_Unmute: 1672060989
+      UI_ButtonBG: -432468190
+      UI_Camera: -1185223855
+      UI_CopyButton: -212334823
+      UI_DarkBloodStain: 1594227386
+      UI_EmptyVolume: -1074028150
+      UI_FullVolume: 1134176861
+      UI_HowToButton: 457970938
+      UI_Knifestained: -1014823518
+      UI_LeaveButton: -646649978
+      UI_LightBloodStain: 412049416
+      UI_MainMenuButton: 1895578689
+      UI_MuteFace: -1577952694
+      UI_PlayButton: -1142980777
+      UI_Player1: 703920839
+      UI_QuitButton: 1609109490
+      UI_SelectButton: 181073393
+      UI_UnmuteFace: 618327343
+      ui assets_0: -1019164996
+      ui assets_13: 364939018
+      ui assets_19: -218678190
+      ui assets_20: -1170020216
+      ui assets_21: 1248327468
+      ui assets_23: 1265002207
+      ui assets_24: 926226661
+      ui assets_25: -995486275
+      ui assets_26: -1482543321
+      ui assets_27: 1729751732
+      ui assets_30: 1698786344
+      ui assets_32: 1654602193
+      ui assets_33: -381680661
+      ui assets_34: -166577025
+      ui assets_35: 2139666187
+      ui assets_36: 1216431247
+      ui assets_9: 395651238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

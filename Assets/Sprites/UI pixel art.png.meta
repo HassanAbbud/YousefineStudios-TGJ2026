@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -34,16 +34,16 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -134,12 +134,232 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI_PlayButton2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 372
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0fd0e6889f68fb4c88cc2d248d332bf
+      internalID: 2089585046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_HowToButton2
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 282
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff14691ca0a50c34a9d268bfc66a15af
+      internalID: 904683487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Player1Button
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 272
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbe542c33080cb4cbf733f7a6c34827
+      internalID: -816061590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Player2Button
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 278
+        width: 225
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae52906c284e8946a7ebfd0ff616afc
+      internalID: 784219009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_1PlayerSlot1
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 212
+        width: 300
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b38af6f0f87444db574b930273673c
+      internalID: 1230906012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI pixel art_19
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 216
+        width: 300
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332a2de66c071ca4d99475b6962bbf6b
+      internalID: 1879692521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_2PlayerSlot1
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 173
+        width: 300
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1d7bd4aaf06c34d846752c1b1e1a82
+      internalID: -2073605049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_2PlayerSlot2
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 178
+        width: 300
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5ece71800d6534a8177cda19a7d476
+      internalID: 404239182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_3PlayerSlot1
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 132
+        width: 300
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b592c3ae02c0174fb852dc43db1c8c7
+      internalID: -1089203359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIText_3PlayerSlot2
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 139
+        width: 300
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d9843f744f7a44da8a35e92821dcdf
+      internalID: 346783922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: e00508fdb0d718648b3907a930d3dfcf
     internalID: 0
     vertices: []
     indices: 
@@ -147,8 +367,98 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
-    nameFileIdTable: {}
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      UI pixel art_10: 789772465
+      UI pixel art_11: -1040624252
+      UI pixel art_12: 1865925744
+      UI pixel art_13: -1525164396
+      UI pixel art_14: -689873663
+      UI pixel art_15: 54655900
+      UI pixel art_16: 992238898
+      UI pixel art_17: 1310967135
+      UI pixel art_18: 645287606
+      UI pixel art_19: 1879692521
+      UI pixel art_20: -173422991
+      UI pixel art_21: -322160648
+      UI pixel art_22: 1873804735
+      UI pixel art_23: 1018446187
+      UI pixel art_24: -1352709572
+      UI pixel art_25: 453409805
+      UI pixel art_26: 1880074962
+      UI pixel art_27: 483497076
+      UI pixel art_28: -197427833
+      UI pixel art_29: -823154626
+      UI pixel art_30: 1694151979
+      UI pixel art_32: -1312743663
+      UI pixel art_33: -1967503778
+      UI pixel art_34: 1248510946
+      UI pixel art_35: -1007100085
+      UI pixel art_36: -841222859
+      UI pixel art_37: 682176335
+      UI pixel art_38: 1069627340
+      UI pixel art_39: 1409257894
+      UI pixel art_40: -777438764
+      UI pixel art_42: 468756243
+      UI pixel art_43: 370166325
+      UI pixel art_44: -1257571889
+      UI pixel art_45: 1050045498
+      UI pixel art_46: 1021574074
+      UI pixel art_47: -393836006
+      UI pixel art_48: 1346556354
+      UI pixel art_49: -955402183
+      UI pixel art_5: 1269796149
+      UI pixel art_50: -2142448837
+      UI pixel art_51: -3482499
+      UI pixel art_52: -1243612727
+      UI pixel art_53: 1897698351
+      UI pixel art_55: -767289437
+      UI pixel art_56: -387789753
+      UI pixel art_57: 1366832253
+      UI pixel art_58: -1971595101
+      UI pixel art_59: -1951594365
+      UI pixel art_6: -1911274377
+      UI pixel art_60: -631217094
+      UI pixel art_61: -283098717
+      UI pixel art_62: 528466709
+      UI pixel art_63: -813491747
+      UI pixel art_64: -1144525030
+      UI pixel art_65: -99691349
+      UI pixel art_66: -1428112943
+      UI pixel art_67: 1420732240
+      UI pixel art_68: 1968513306
+      UI pixel art_69: 958063778
+      UI pixel art_7: -923848451
+      UI pixel art_70: 697582572
+      UI pixel art_72: -143159146
+      UI pixel art_73: -1162477315
+      UI pixel art_74: 1122485446
+      UI pixel art_75: -1438408266
+      UI pixel art_76: -1840729316
+      UI pixel art_77: 468441954
+      UI pixel art_78: 235429412
+      UI pixel art_79: 1796046601
+      UI pixel art_8: -1575497474
+      UI pixel art_80: 34313564
+      UI pixel art_81: 1523716794
+      UI pixel art_82: 947027334
+      UI pixel art_83: -2075202566
+      UI pixel art_84: 604117982
+      UI pixel art_85: -666298739
+      UI pixel art_86: -1709633214
+      UI pixel art_87: -1245033666
+      UI pixel art_9: 456984472
+      UIText_1PlayerSlot1: 1230906012
+      UIText_2PlayerSlot1: -2073605049
+      UIText_2PlayerSlot2: 404239182
+      UIText_3PlayerSlot1: -1089203359
+      UIText_3PlayerSlot2: 346783922
+      UI_HowToButton2: 904683487
+      UI_PlayButton2: 2089585046
+      UI_Player1Button: -816061590
+      UI_Player2Button: 784219009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
