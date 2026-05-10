@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b703a6cb36fd204b9ee78d9c69a1a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SuspiciousObject
-  suspicionWeight: 1
+  suspicionWeight: 0.9
   startVisible: 1
 --- !u!54 &66971918
 Rigidbody:
@@ -1636,6 +1636,7 @@ GameObject:
   - component: {fileID: 1006374200}
   - component: {fileID: 1006374199}
   - component: {fileID: 1006374204}
+  - component: {fileID: 1006374205}
   m_Layer: 6
   m_Name: Bloodstain
   m_TagString: Untagged
@@ -1742,7 +1743,7 @@ Transform:
   m_GameObject: {fileID: 1006374198}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1899996, y: 0.64, z: 4.1899996}
+  m_LocalPosition: {x: 3.45, y: 0.64, z: 1.63}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1775,6 +1776,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1006374205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006374198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b703a6cb36fd204b9ee78d9c69a1a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuspiciousObject
+  suspicionWeight: 0.5
+  startVisible: 1
 --- !u!1 &1065057655
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,6 +2715,7 @@ GameObject:
   - component: {fileID: 1850078317}
   - component: {fileID: 1850078316}
   - component: {fileID: 1850078321}
+  - component: {fileID: 1850078322}
   m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
@@ -2839,6 +2855,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1850078322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850078315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b703a6cb36fd204b9ee78d9c69a1a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SuspiciousObject
+  suspicionWeight: 1
+  startVisible: 1
 --- !u!1 &1908056437
 GameObject:
   m_ObjectHideFlags: 0
