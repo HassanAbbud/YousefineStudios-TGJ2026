@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043524081524300579, guid: 289c6685275fb584698e5253aa435836, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9f1d565ed3a58214ebfe4878f64198d7, type: 2}
     - target: {fileID: 5361731534052316991, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_Name
       value: TestLightSwitch (1)
@@ -306,6 +310,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043524081524300579, guid: 289c6685275fb584698e5253aa435836, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9f1d565ed3a58214ebfe4878f64198d7, type: 2}
     - target: {fileID: 5361731534052316991, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_Name
       value: TestLightSwitch
@@ -2436,6 +2444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043524081524300579, guid: 289c6685275fb584698e5253aa435836, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9f1d565ed3a58214ebfe4878f64198d7, type: 2}
     - target: {fileID: 5361731534052316991, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_Name
       value: TestLightSwitch
@@ -11266,15 +11278,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3924865286964470641, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.22
+      value: -36.321
       objectReference: {fileID: 0}
     - target: {fileID: 3924865286964470641, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.74
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 3924865286964470641, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.24
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3924865286964470641, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11304,6 +11316,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043524081524300579, guid: 289c6685275fb584698e5253aa435836, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9f1d565ed3a58214ebfe4878f64198d7, type: 2}
     - target: {fileID: 5361731534052316991, guid: 289c6685275fb584698e5253aa435836, type: 3}
       propertyPath: m_Name
       value: TestLightSwitch
