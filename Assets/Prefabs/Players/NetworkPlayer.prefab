@@ -1225,6 +1225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7537389883962043544}
     m_Modifications:
+    - target: {fileID: 149862541989402627, guid: d5375965b0258734eabdf36c1fe8b35b, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
     - target: {fileID: 827017198822621921, guid: d5375965b0258734eabdf36c1fe8b35b, type: 3}
       propertyPath: m_Name
       value: Player2Canvas
