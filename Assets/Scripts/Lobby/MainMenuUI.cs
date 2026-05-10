@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,12 @@ namespace Lobby
         [Header("Buttons")]
         public Button createButton;
         public Button joinButton;
+        public Button quitButton;
+        public Button aboutButton;
+        public Button backButton;
+
+        [Header("Panels")]
+        public GameObject aboutPanel;
 
         [Header("Status")]
         public TMP_Text statusText;
@@ -29,6 +36,9 @@ namespace Lobby
             createButton.onClick.AddListener(() => _ = OnCreate());
             joinButton.onClick.AddListener(() => _ = OnJoin());
             if (loadingOverlay != null) loadingOverlay.SetActive(false);
+            quitButton.onClick.AddListener(OnQuit);
+            aboutButton.onClick.AddListener(Open);
+            backButton.onClick.AddListener(Close);
         }
 
         void Start()
@@ -96,5 +106,27 @@ namespace Lobby
             joinButton.interactable = !busy;
             if (msg != null) SetStatus(msg);
         }
+
+        public void OnQuit()
+        {
+#if UNITY_EDITOR 
+                 UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
+
+        private void Open()
+        {
+            //Enable Panel
+            aboutPanel.SetActive(true);
+        }
+
+        private void Close()
+        {
+            //Disable Panel
+            aboutPanel.SetActive(false);
+        }
+       
     }
 }
