@@ -3,7 +3,10 @@ public class LockerInteractable : MonoBehaviour, IInteractable
 {
     private bool _bodyStored;
     public string GetPromptText() => _bodyStored ? "Locker (full)" : "[E] Hide body in locker";
-    public bool CanInteract(PlayerInteraction player) => !_bodyStored && player.IsCarryingBody;
+
+    // Only accepts the BAGGED body — raw body is rejected
+    public bool CanInteract(PlayerInteraction player) => !_bodyStored && player.IsCarryingBag;
+
     public void Interact(PlayerInteraction player)
     {
         _bodyStored = true;

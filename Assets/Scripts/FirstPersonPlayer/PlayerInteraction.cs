@@ -23,6 +23,7 @@ public class PlayerInteraction : NetworkBehaviour
     [SerializeField] private Transform carryAnchor;
 
     public bool IsCarryingBody { get; private set; }
+    public bool IsCarryingBag  { get; private set; }   // true only when holding the bagged body
     public bool IsCarryingItem { get; private set; }
     public GameObject CarriedItem { get; private set; }
 
@@ -82,12 +83,13 @@ public class PlayerInteraction : NetworkBehaviour
         HidePrompt();
     }
 
-    public void PickUpItem(GameObject item, bool isBody = false)
+    public void PickUpItem(GameObject item, bool isBody = false, bool isBag = false)
     {
         if (CarriedItem != null) return;
 
         CarriedItem = item;
         IsCarryingBody = isBody;
+        IsCarryingBag  = isBag;
         IsCarryingItem = true;
 
         item.transform.SetParent(carryAnchor);
@@ -117,6 +119,7 @@ public class PlayerInteraction : NetworkBehaviour
 
         CarriedItem = null;
         IsCarryingBody = false;
+        IsCarryingBag  = false;
         IsCarryingItem = false;
     }
 
@@ -126,6 +129,7 @@ public class PlayerInteraction : NetworkBehaviour
         Destroy(CarriedItem);
         CarriedItem = null;
         IsCarryingBody = false;
+        IsCarryingBag  = false;
         IsCarryingItem = false;
     }
 
