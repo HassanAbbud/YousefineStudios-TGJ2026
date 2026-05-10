@@ -57,7 +57,7 @@ public class GarbageBagInteractable : MonoBehaviour, IInteractable, IDropNotify
         {
             // Pick up the whole bag
             _pickedUp = true;
-            player.PickUpItem(gameObject, isBody: true);  // isBody:true so locker accepts it
+            player.PickUpItem(gameObject, isBody: true, isBag: true);  // locker only accepts isBag
             Debug.Log("[GarbageBag] Bag picked up. Bring to locker.");
         }
     }
