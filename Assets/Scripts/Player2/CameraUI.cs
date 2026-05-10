@@ -55,6 +55,16 @@ namespace Player2
                 feedImage.texture = CameraManager.Instance.feedTexture;
         }
 
+        void Update()
+        {
+            // Camera operator: keep cursor unlocked at all times.
+            // Re-asserts in case something else (input field, scene transition, etc.) changes it.
+            if (Cursor.lockState != CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.None;
+            if (!Cursor.visible)
+                Cursor.visible = true;
+        }
+
         void OnDestroy()
         {
             if (CameraManager.Instance != null)
