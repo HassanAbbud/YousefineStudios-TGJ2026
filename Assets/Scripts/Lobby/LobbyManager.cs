@@ -33,6 +33,8 @@ namespace Lobby
         const float HEARTBEAT_INTERVAL = 15f; // host pings to keep lobby alive
         const float POLL_INTERVAL = 1.5f;     // clients poll for updates
 
+        bool _stoppedPolling = false;
+
         void Awake()
         {
             if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -43,6 +45,7 @@ namespace Lobby
         void Update()
         {
             if (CurrentLobby == null) return;
+            if (_stoppedPolling) return;
 
             if (IsHost())
             {
@@ -73,6 +76,7 @@ namespace Lobby
 
         async Task PollAsync()
         {
+            if (_stoppedPolling) return;
             try
             {
                 var lobby = await LobbyService.Instance.GetLobbyAsync(CurrentLobby.Id);
@@ -87,7 +91,7 @@ namespace Lobby
                 {
                     OnGameStarting?.Invoke();
                     await GameNetworkManager.Instance.StartClientWithRelay(entry.Value);
-                    CurrentLobby = null; // stop polling after handoff
+                    _stoppedPolling = true;  // stop polling but keep CurrentLobby for voice chat
                 }
             }
             catch (LobbyServiceException e) { Debug.LogWarning($"Poll failed: {e.Message}"); }
@@ -229,6 +233,7 @@ namespace Lobby
 
         public async Task LeaveLobbyAsync()
         {
+            _stoppedPolling = false;
             if (CurrentLobby == null) return;
             try
             {
