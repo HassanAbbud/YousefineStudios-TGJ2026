@@ -46,11 +46,23 @@ namespace Player2
 
         void Start()
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             CameraManager.Instance.OnCameraChanged += HandleCameraChanged;
             HandleCameraChanged(CameraManager.Instance.ActiveIndex);
 
             if (feedImage != null && CameraManager.Instance.feedTexture != null)
                 feedImage.texture = CameraManager.Instance.feedTexture;
+        }
+
+        void Update()
+        {
+            // Camera operator: keep cursor unlocked at all times.
+            // Re-asserts in case something else (input field, scene transition, etc.) changes it.
+            if (Cursor.lockState != CursorLockMode.None)
+                Cursor.lockState = CursorLockMode.None;
+            if (!Cursor.visible)
+                Cursor.visible = true;
         }
 
         void OnDestroy()
@@ -99,6 +111,7 @@ namespace Player2
             if (codeInput != null)
             {
                 codeInput.text = "";
+                codeInput.characterLimit = target.CodeDigitCount;
                 codeInput.Select();
                 codeInput.ActivateInputField();
             }
@@ -110,11 +123,14 @@ namespace Player2
         {
             if (pendingCodeTarget == null) { CancelCode(); return; }
             string entered = codeInput != null ? codeInput.text.Trim() : "";
-            if (entered.Length != 3 || !int.TryParse(entered, out _))
+
+            int expected = pendingCodeTarget.CodeDigitCount;
+            if (entered.Length != expected || !int.TryParse(entered, out _))
             {
-                if (codeFeedbackLabel != null) codeFeedbackLabel.text = "Enter 3 digits.";
+                if (codeFeedbackLabel != null) codeFeedbackLabel.text = $"Enter {expected} digits.";
                 return;
             }
+
             pendingCodeTarget.TryUnlock(entered, success =>
             {
                 if (success)
@@ -145,5 +161,6 @@ namespace Player2
     public interface ICodeInteractable
     {
         void TryUnlock(string enteredCode, System.Action<bool> callback);
+        int CodeDigitCount { get; }
     }
 }

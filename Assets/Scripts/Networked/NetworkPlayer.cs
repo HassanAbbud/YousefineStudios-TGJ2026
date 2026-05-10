@@ -1,5 +1,6 @@
 using Lobby;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 
 namespace Networked
@@ -8,6 +9,11 @@ namespace Networked
     /// One prefab spawned per client. Contains both rigs as children.
     /// On spawn, asks the server what role this player picked in the lobby,
     /// then activates only the matching rig locally for the owner.
+    ///
+    /// IMPORTANT: This prefab uses ClientNetworkTransform (owner-authoritative).
+    /// That means the owning client controls its own position. The server cannot
+    /// teleport the client by setting transform.position; instead the OWNER
+    /// teleports itself locally once it knows its role.
     /// </summary>
     public class NetworkPlayer : NetworkBehaviour
     {
@@ -63,36 +69,51 @@ namespace Networked
         [ServerRpc]
         void SubmitRoleServerRpc(int role, ServerRpcParams rpcParams = default)
         {
+            // Server records the role. Position is then set by the owner itself
+            // (since ClientNetworkTransform is owner-authoritative).
             RoleValue.Value = role;
-
-            // Server teleports the player to the correct spawn point.
-            // (Position sync via NetworkTransform will broadcast it to the client.)
-            TeleportToSpawnPoint((PlayerRole)role);
         }
 
-        void TeleportToSpawnPoint(PlayerRole role)
+        void TeleportToSpawnPointAsOwner(PlayerRole role)
         {
+            // Owner-authoritative: only the owner moves itself. The position is then
+            // automatically synced to other clients via ClientNetworkTransform.
+            if (!IsOwner) return;
+
             string spawnName = role == PlayerRole.Player1_FirstPerson
                 ? player1SpawnPointName
                 : player2SpawnPointName;
 
             GameObject spawn = GameObject.Find(spawnName);
-            if (spawn != null)
-            {
-                transform.position = spawn.transform.position;
-                transform.rotation = spawn.transform.rotation;
-            }
-            else
+            if (spawn == null)
             {
                 Debug.LogWarning($"[NetworkPlayer] Spawn point '{spawnName}' not found in scene. " +
                                  "Player will spawn at world origin.");
+                return;
             }
+
+            // CharacterController fights direct transform.position writes.
+            // Disable it for one frame, teleport, then re-enable.
+            var cc = GetComponentInChildren<CharacterController>(true);
+            if (cc != null) cc.enabled = false;
+
+            // Use NetworkTransform.Teleport so interpolation doesn't lerp us across the map.
+            var nt = GetComponent<NetworkTransform>();
+            if (nt != null)
+            {
+                nt.Teleport(spawn.transform.position, spawn.transform.rotation, transform.localScale);
+            }
+            else
+            {
+                transform.SetPositionAndRotation(spawn.transform.position, spawn.transform.rotation);
+            }
+
+            if (cc != null) cc.enabled = true;
         }
 
         void HandleRoleChanged(int prev, int now)
         {
             // Each client only activates THEIR OWN rig — not the other player's.
-            // The remote player's rig stays off so we don't see two cameras / two FP characters.
             if (!IsOwner) return;
 
             var role = (PlayerRole)now;
@@ -102,6 +123,7 @@ namespace Networked
             if (firstPersonRig != null) firstPersonRig.SetActive(isFP);
             if (cameraOperatorRig != null) cameraOperatorRig.SetActive(isCam);
 
+            // Cursor: locked for FP, free for camera operator.
             if (isFP)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -112,6 +134,10 @@ namespace Networked
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }
+
+            // Now that we know our role, teleport ourselves to the right spawn point.
+            // Owner teleports because ClientNetworkTransform is owner-authoritative.
+            TeleportToSpawnPointAsOwner(role);
         }
     }
 }

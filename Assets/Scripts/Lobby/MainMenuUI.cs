@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,12 +32,26 @@ namespace Lobby
 
         void Awake()
         {
+            // CRITICAL: when we land on the main menu (fresh start, after death,
+            // after disconnect, after leaving the lobby), the cursor must be
+            // visible and unlocked so the user can click the buttons.
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             createButton.onClick.AddListener(() => _ = OnCreate());
             joinButton.onClick.AddListener(() => _ = OnJoin());
             if (loadingOverlay != null) loadingOverlay.SetActive(false);
             quitButton.onClick.AddListener(OnQuit);
             aboutButton.onClick.AddListener(Open);
             backButton.onClick.AddListener(Close);
+        }
+
+        void OnEnable()
+        {
+            // Re-assert in case something else (a stale netcode callback during
+            // teardown, etc.) flips the cursor between Awake and Start.
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         void Start()
@@ -109,8 +122,8 @@ namespace Lobby
 
         public void OnQuit()
         {
-#if UNITY_EDITOR 
-                 UnityEditor.EditorApplication.isPlaying = false;
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
 #endif
@@ -118,15 +131,12 @@ namespace Lobby
 
         private void Open()
         {
-            //Enable Panel
             aboutPanel.SetActive(true);
         }
 
         private void Close()
         {
-            //Disable Panel
             aboutPanel.SetActive(false);
         }
-       
     }
 }
